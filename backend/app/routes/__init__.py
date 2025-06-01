@@ -1,3 +1,5 @@
-from flask import Flask
+# Import routes to register them
+from .transcribe import transcribe_bp
+from .analyse import analyse_bp
 
-app = Flask(__name__)
+blueprints = [transcribe_bp, analyse_bp]

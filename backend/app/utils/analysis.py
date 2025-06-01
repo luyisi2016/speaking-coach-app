@@ -1,6 +1,6 @@
 import spacy
 from collections import Counter
-from speech_to_text_beta import transcribe_gcs, upload_to_gcs  
+from speech_to_text import transcribe_gcs, upload_to_gcs  
 from ..db.database import get_db_connection
 import json
 
@@ -50,7 +50,7 @@ def analyse_with_spacy(transcript_text):
 
 
 # This function uses get_db_connection from db.py
-def analyze_and_store_audio(local_audio_path, bucket_name="my_audio_bucket_2025"):
+def analyse_and_store_audio(local_audio_path, bucket_name="my_audio_bucket_2025"):
     gcs_uri = upload_to_gcs(local_audio_path, bucket_name)
     transcript = transcribe_gcs(gcs_uri)
     analysis = analyse_with_spacy(transcript)
